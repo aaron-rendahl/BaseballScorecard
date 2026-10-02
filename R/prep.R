@@ -8,7 +8,8 @@ tmp1 <- tibble(name=c("IP",
                       "Strike Rate", "BIP/Strikes"),
                numFmt=c("0.0", rep("0.000", 9), rep("0%", 8)))
 
-tmp2 <- bind_rows(tibble(name=c("Lineup", "Number", "Name", "BA", "OBP", "SLG"), width=8),
+tmp2 <- bind_rows(tibble(name=c("Lineup", "Number", "BA", "OBP", "SLG"), width=8),
+                  tibble(name="Name", width=15),
                   tibble(name=c("SR", "SR.", "K/PA"), width=7),
                   tibble(name=c("Opp. OBP", "BBHB/BF"), width=9),
                   tibble(name=c("BIP", "BIP/AB", "Hard/BIP", "Strike Rate", "BIP/Strike"), width=c(7, 8, 8, 10, 10)),
@@ -59,9 +60,9 @@ prepDataList <- function(x, format=fmt) {
       xi$.textDecoration[k] <- "bold"
     }
     for(n in names(xi)) {
-      if(n %in% fmt$name) {
-        attr(xi[[n]], "numFmt") <- fmt$numFmt[fmt$name==n]
-        attr(xi[[n]], "width") <- fmt$width[fmt$name==n]
+      if(n %in% format$name) {
+        attr(xi[[n]], "numFmt") <- format$numFmt[format$name==n]
+        attr(xi[[n]], "width") <- format$width[format$name==n]
       }
     }
     xi

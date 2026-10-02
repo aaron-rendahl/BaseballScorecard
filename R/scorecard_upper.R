@@ -68,7 +68,7 @@ upper <- function(game=NULL, side,
                     TRUE ~ "")
     rr <- if(haslogo) dim(logo)[2]/dim(logo)[1] else 1
     teamtext <- textGrob(paste0(vs, team),
-                         x = unit(0.8 * rr * haslogo, "snpc"),
+                         x = unit(1 * rr * haslogo, "snpc"),
                          y = 0.55,
                          just=c("left", "center"),
                          gp = gpar(fontsize = teamnamesize))
